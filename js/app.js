@@ -1,4 +1,6 @@
-fetch("http://10.59.122.39:3000/v1/feedbacks")
+let unsortedAPI = "http://10.59.122.39:3000/v1/feedbacks"
+
+fetch(unsortedAPI)
     .then((response) => response.json())
         .then((data) => {
             console.log("Data fetched successfully:", data);
@@ -37,7 +39,22 @@ fetch("http://10.59.122.39:3000/v1/feedbacks")
                 feedbackList.appendChild(feedbackItem)
             })
 
+			const voteCount = document.querySelectorAll(".text-regular-3");
+			voteCount.forEach((vote) => {
+				console.log(vote.textContent);
+			});
+
             const filterSort = document.querySelector("#filter-sort")
+			let sortedAPI = ""
+			filterSort.addEventListener("change", (event) => {
+				const selectedValue = event.target.value;
+				console.log(selectedValue);
+				if (selectedValue === "Most Upvotes") {
+					let unsortedAPI = sortedAPI
+				} else if (selectedValue === "Recent") {
+					
+				}
+			})
             console.log(filterSort)
 
         })
