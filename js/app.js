@@ -10,6 +10,16 @@ fetch(unsortedAPI)
                 const feedbackItem = document.createElement("div")
                 feedbackItem.classList.add("feedback-item")
                 const feedbackItems = document.querySelectorAll(".feedback-item")
+				const searchButton = document.querySelector("#search");
+
+				searchButton.addEventListener("click", (e) => {
+					e.preventDefault();
+					const feedbackCounter = document.querySelector(".feedback-counter");
+					if (feedbackCounter) {
+						feedbackCounter.innerHTML = feedbackItems.length;
+					}
+				});
+
 
                 feedbackItem.innerHTML = `
 					<div class="feedback-item-votes">
@@ -45,12 +55,12 @@ fetch(unsortedAPI)
 			});
 
             const filterSort = document.querySelector("#filter-sort")
-			let sortedAPI = ""
+			let sortedAPI = "http://10.59.122.39:3000/v1/feedbacks?sort=upvotes"
 			filterSort.addEventListener("change", (event) => {
 				const selectedValue = event.target.value;
 				console.log(selectedValue);
 				if (selectedValue === "Most Upvotes") {
-					let unsortedAPI = sortedAPI
+					let unsortedAPI = "http://10.59.122.39:3000/v1/feedbacks?sort=upvotes"
 				} else if (selectedValue === "Recent") {
 					
 				}
